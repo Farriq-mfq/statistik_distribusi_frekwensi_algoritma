@@ -123,15 +123,3 @@ const Dis_Fre = new DisFre([
   111, 182, 286, 342, 131, 190, 294, 353, 147, 197, 295, 377, 151, 201, 310,
   377, 151, 209, 319, 439, 182, 234,
 ]);
-// console.log(Dis_Fre.range());
-// console.log(Dis_Fre.rowClass());
-// console.log(Dis_Fre.interval());
-// console.log(Dis_Fre.jangkauan());
-// console.log(Dis_Fre.frekwensi());
-// console.log(Dis_Fre.TepiAtas());
-// console.log(Dis_Fre.TepiBawah());
-// console.log(Dis_Fre.frekwensiKumulatifKurangDari());
-// console.log(Dis_Fre.totalFrekwensi());
-// console.log(Dis_Fre.frekwensiKumulatifLebihDari());
-// console.log(Dis_Fre.frekwensiRelatif());
-console.log(Dis_Fre.nilaiTengah());
