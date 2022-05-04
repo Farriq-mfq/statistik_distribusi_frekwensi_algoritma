@@ -155,6 +155,16 @@ class DisFre {
 
 // example data
 const Dis_Fre = new DisFre([
-  111, 182, 286, 342, 131, 190, 294, 353, 147, 197, 295, 377, 151, 201, 310,
-  377, 151, 209, 319, 439, 182, 234,
+  50, 53, 74, 73, 75, 76, 58, 67, 74, 74, 73, 72, 72, 73, 73, 72, 79, 71, 70,
+  75, 78, 52, 74, 74, 75, 74, 72, 74, 75, 74, 72, 68, 79, 71, 79, 69, 71, 70,
+  70, 79,
 ]);
+
+// console.log(Dis_Fre.totalFrekwensi());
+// console.log(Dis_Fre.range());
+// console.log(Dis_Fre.rowClass());
+// console.log(Dis_Fre.interval());
+// console.log(Dis_Fre.jangkauan());
+// console.log(Dis_Fre.frekwensi());
+// console.log(Dis_Fre.TepiBawah());
+// console.log(Dis_Fre.TepiAtas());
