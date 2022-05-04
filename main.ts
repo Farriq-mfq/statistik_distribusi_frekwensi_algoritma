@@ -117,9 +117,25 @@ class DisFre {
     }
     return result;
   }
+  getOgiveFkKurangDari(): any[] {
+    let res = [];
+    for (let j = 0; j < this.frekwensiKumulatifKurangDari().length; j++) {
+      const fk_ = this.frekwensiKumulatifKurangDari()[j];
+      res.push(Math.round((fk_ / this.totalFrekwensi()) * 100));
+    }
+    let json = JSON.stringify({
+      percentage: res,
+      fk: this.frekwensiKumulatifKurangDari(),
+    });
+
+    return JSON.parse(json);
+  }
 }
 
+// example data
 const Dis_Fre = new DisFre([
   111, 182, 286, 342, 131, 190, 294, 353, 147, 197, 295, 377, 151, 201, 310,
   377, 151, 209, 319, 439, 182, 234,
 ]);
+
+console.log(Dis_Fre.getOgiveFkKurangDari());
