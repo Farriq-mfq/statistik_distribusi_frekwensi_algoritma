@@ -130,7 +130,8 @@ var DisFre = /** @class */ (function () {
         }
         var json = JSON.stringify({
             percentage: res,
-            fk: this.frekwensiKumulatifKurangDari()
+            fk: this.frekwensiKumulatifKurangDari(),
+            tepi_bawah: this.TepiBawah()
         });
         return JSON.parse(json);
     };
@@ -153,19 +154,36 @@ var DisFre = /** @class */ (function () {
         });
         return JSON.parse(json);
     };
+    DisFre.prototype.getAll = function () {
+        var arr = [];
+        for (var i = 0; i < this.rowClass(); i++) {
+            arr.push({
+                jangkauan: this.jangkauan()[i],
+                frekwensi: this.frekwensi()[i],
+                tepi_atas: this.TepiAtas()[i],
+                tepi_bawah: this.TepiBawah()[i],
+                xi: this.nilaiTengah()[i],
+                fk_kurang_dari: this.frekwensiKumulatifKurangDari()[i],
+                fk_lebih_dari: this.frekwensiKumulatifLebihDari()[i],
+                frekwensi_relative: this.frekwensiRelatif(true)[i]
+            });
+        }
+        return arr;
+    };
     return DisFre;
 }());
 // example data
 var Dis_Fre = new DisFre([
-    50, 53, 74, 73, 75, 76, 58, 67, 74, 74, 73, 72, 72, 73, 73, 72, 79, 71, 70,
-    75, 78, 52, 74, 74, 75, 74, 72, 74, 75, 74, 72, 68, 79, 71, 79, 69, 71, 70,
-    70, 79,
+    73, 84, 40, 25, 63, 65, 46, 38, 57, 50, 60, 30, 82, 72, 29, 62, 54, 56, 51,
+    55, 39, 38, 33, 18, 16, 41, 71, 80, 58, 54, 26, 47, 52, 37, 73, 45, 62, 51,
+    64, 61, 40, 43, 22, 31, 36, 70, 53, 23, 52, 76,
 ]);
-// console.log(Dis_Fre.totalFrekwensi());
-// console.log(Dis_Fre.range());
-// console.log(Dis_Fre.rowClass());
-// console.log(Dis_Fre.interval());
-// console.log(Dis_Fre.jangkauan());
+// console.log(Dis_Fre.getAll());
+// // console.log(Dis_Fre.totalFrekwensi());
+// // console.log(Dis_Fre.range());
+// // console.log(Dis_Fre.rowClass());
+// // console.log(Dis_Fre.interval());
+// // console.log(Dis_Fre.jangkauan());
 // console.log(Dis_Fre.frekwensi());
-// console.log(Dis_Fre.TepiBawah());
-// console.log(Dis_Fre.TepiAtas());
+// // console.log(Dis_Fre.TepiBawah());
+// // console.log(Dis_Fre.TepiAtas());
