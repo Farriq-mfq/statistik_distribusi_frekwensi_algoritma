@@ -140,6 +140,7 @@ class DisFre {
     let json = JSON.stringify({
       percentage: res,
       fk: this.frekwensiKumulatifLebihDari(),
+      tepi_bawah: this.TepiBawah(),
     });
 
     return JSON.parse(json);
@@ -169,20 +170,3 @@ class DisFre {
     return arr;
   }
 }
-
-// example data
-const Dis_Fre = new DisFre([
-  73, 84, 40, 25, 63, 65, 46, 38, 57, 50, 60, 30, 82, 72, 29, 62, 54, 56, 51,
-  55, 39, 38, 33, 18, 16, 41, 71, 80, 58, 54, 26, 47, 52, 37, 73, 45, 62, 51,
-  64, 61, 40, 43, 22, 31, 36, 70, 53, 23, 52, 76,
-]);
-// console.log(Dis_Fre.getAll());
-
-// // console.log(Dis_Fre.totalFrekwensi());
-// // console.log(Dis_Fre.range());
-// // console.log(Dis_Fre.rowClass());
-// // console.log(Dis_Fre.interval());
-// // console.log(Dis_Fre.jangkauan());
-// console.log(Dis_Fre.frekwensi());
-// // console.log(Dis_Fre.TepiBawah());
-// // console.log(Dis_Fre.TepiAtas());

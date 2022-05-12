@@ -38,18 +38,21 @@
           <th>Frekwensi</th>
           <th>Tepi atas</th>
           <th>Tepi bawah</th>
-          <th>Nilai tengah</th>
+          <th>xi'</th>
           <th>FK<</th>
           <th>FK></th>
           <th>FR</th>
         </tr>
         <tbody id="tbody"></tbody>
       </table>
-      <div>
+      <div id="canvas_wrapper_1">
         <canvas id="fk_kurang_dari"></canvas>
       </div>
-      <div>
-        <canvas id="myChart"></canvas>
+      <div id="canvas_wrapper_2">
+        <canvas id="fk_lebih_dari"></canvas>
+      </div>
+      <div id="canvas_wrapper_3">
+        <canvas id="poligon"></canvas>
       </div>
     </div>
     <script
@@ -69,6 +72,15 @@
         e.preventDefault();
         table.innerHTML = "";
         keterangan.innerHTML = "";
+        document.getElementById("fk_kurang_dari").remove();
+        document.getElementById("canvas_wrapper_1").innerHTML =
+          '<canvas id="fk_kurang_dari"></canvas>';
+        document.getElementById("fk_lebih_dari").remove();
+        document.getElementById("canvas_wrapper_2").innerHTML =
+          '<canvas id="fk_lebih_dari"></canvas>';
+        document.getElementById("poligon").remove();
+        document.getElementById("canvas_wrapper_3").innerHTML =
+          '<canvas id="poligon"></canvas>';
         if (input.value.trim() != "") {
           const value = input.value;
           try {
@@ -82,12 +94,18 @@
                 <li>Range : ${distfre.range()}</li>
                 <li>Banyak kelas : ${distfre.rowClass()}</li>
                 <li>Interval (Ci) : ${distfre.interval()}</li>
+                <li>Total frekwensi : ${distfre.totalFrekwensi()}</li>
             `;
             const data = distfre.getAll();
             render(data);
             const labelKurangDari = distfre.getOgiveFkKurangDari().tepi_bawah;
             const percentageKurangDari =
               distfre.getOgiveFkKurangDari().percentage;
+            const labellebihDari = distfre.getOgiveFkLebihDari().tepi_bawah;
+            const percentagelebihDari =
+              distfre.getOgiveFkLebihDari().percentage;
+            const poligonFrekwensi = distfre.getGrafikPoligon().frekwensi;
+            const poligonNilaitengah = distfre.getGrafikPoligon().nilaiTengah;
             const datas = {
               labels: labelKurangDari,
               datasets: [
@@ -99,15 +117,55 @@
                 },
               ],
             };
+            const datas2 = {
+              labels: labellebihDari,
+              datasets: [
+                {
+                  label: "Grafik ogive fk >",
+                  backgroundColor: "rgb(255, 99, 132)",
+                  borderColor: "rgb(255, 99, 132)",
+                  data: percentagelebihDari,
+                },
+              ],
+            };
+            const datas3 = {
+              labels: poligonNilaitengah,
+              datasets: [
+                {
+                  label: "Grafik Poligon",
+                  backgroundColor: "rgb(255, 99, 132)",
+                  borderColor: "rgb(255, 99, 132)",
+                  data: poligonFrekwensi,
+                },
+              ],
+            };
 
             const config = {
               type: "line",
               data: datas,
               options: {},
             };
+            const config2 = {
+              type: "line",
+              data: datas2,
+              options: {},
+            };
+            const config3 = {
+              type: "line",
+              data: datas3,
+              options: {},
+            };
             const myChart = new Chart(
               document.getElementById("fk_kurang_dari"),
               config
+            );
+            const myChart2 = new Chart(
+              document.getElementById("fk_lebih_dari"),
+              config2
+            );
+            const myChart3 = new Chart(
+              document.getElementById("poligon"),
+              config3
             );
           } catch (error) {
             console.error(error);
@@ -132,6 +190,7 @@
           `;
         });
       }
+      console.clear();
     </script>
   </body>
 </html>
