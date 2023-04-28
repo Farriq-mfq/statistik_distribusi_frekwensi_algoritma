@@ -5,3 +5,7 @@
 ```
 git clone https://github.com/Farriq-mfq/statistik_distribusi_frekwensi_algoritma.git
 ```
+### RUN COMMAND
+```
+npm install
+```
